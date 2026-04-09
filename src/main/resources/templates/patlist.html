@@ -9,16 +9,22 @@
 <div class="container">
     <table class="table">
         <thead>
-            <tr>
-                <th>name</th>
-                <th>birth</th>
-            </tr>
+        <tr>
+            <th>social security number</th>
+            <th>name</th>
+            <th>surname</th>
+            <th>gender</th>
+            <th>birth</th>
+        </tr>
         </thead>
         <tbody>
-            <tr th:each="p : ${patients}">
-                <td th:text="${p.name}"></td>
-                <td th:text="${p.birth}"></td>
-            </tr>
+        <tr th:each="p : ${patients}">
+            <td th:text="${p.socialsecuritynumber}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.surname}"></td>
+            <td th:text="${p.gender}"></td>
+            <td th:text="${p.birth}"></td>
+        </tr>
         </tbody>
 
     </table>
