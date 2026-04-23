@@ -1,79 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Greeting</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body{
+            margin:0;
+            font-family:Arial, sans-serif;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        h1{
+            font-size:40px;
+            margin-bottom:20px;
+        }
+
+        .date{
+            font-size:18px;
+            margin-bottom:30px;
+        }
+
+        .container{
+            text-align:center;
+            background:rgba(255,255,255,0.9);
+            padding:50px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .btn{
+            font-size:22px;
+            padding:15px 40px;
+            background-color:#007BFF;
+            color:white;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            transition:0.3s;
+            text-decoration:none;
+            display:inline-block;
+            margin:10px;
+        }
+
+        .btn:hover{
+            background-color:#0056b3;
+            transform:scale(1.05);
+        }
+    </style>
 </head>
-<style>
-
-    body{
-        margin:0;
-        font-family:Arial, sans-serif;
-
-
-        background-size:auto;
-        background-position:center;
-        background-repeat:repeat;
-
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
-
-
-    h1{
-        font-size:40px;
-        margin-bottom:20px;
-    }
-
-    .date{
-        font-size:18px;
-        margin-bottom:30px;
-    }
-
-    .container{
-        text-align:center;
-        background:rgba(255,255,255,0.9);
-        padding:50px;
-        border-radius:15px;
-        box-shadow:0 10px 25px rgba(0,0,0,0.3);
-    }
-
-    .btn{
-        font-size:22px;
-        padding:15px 40px;
-        background-color:#007BFF;
-        color:white;
-        border:none;
-        border-radius:10px;
-        cursor:pointer;
-        transition:0.3s;
-        text-decoration:none;
-    }
-
-    .btn:hover{
-        background-color:#0056b3;
-        transform:scale(1.05);
-    }
-
-</style>
-</head>
-
 <body>
 
 <div class="container">
-    <h1>Patient list</h1>
-    <div class="date">Datum: <span id="datum"></span></div>
+    <h1>Radiologie-Institut</h1>
+    <div class="date">Datum: <span th:text="${today}"></span></div>
     <a href="/patient/list" class="btn">Patient List</a>
+    <a href="/reservation/list" class="btn">Reservation List</a>
+    <a href="/reservation/add" class="btn">New Reservation</a>
 </div>
-
-<script>
-    const heute = new Date();
-    document.getElementById("datum").innerHTML =
-        heute.toLocaleDateString('de-DE');
-</script>
 
 </body>
 </html>

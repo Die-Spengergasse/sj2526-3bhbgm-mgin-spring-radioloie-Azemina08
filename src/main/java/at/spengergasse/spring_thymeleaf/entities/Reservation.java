@@ -1,6 +1,8 @@
 package at.spengergasse.spring_thymeleaf.entities;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,10 +18,22 @@ public class Reservation {
     @ManyToOne
     private Device device;
 
-    private LocalDateTime reservationTime; // Datum und Uhrzeit
-    private String bodyRegion;             // Körperregion
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime startTime;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime endTime;
+
+    private String bodyRegion;
+
+    @Column(length = 1000)
     private String comment;
 
+    @Transient
+    private Integer patientId;
+
+    @Transient
+    private Integer deviceId;
 
     public int getId() {
         return id;
@@ -45,12 +59,20 @@ public class Reservation {
         this.device = device;
     }
 
-    public LocalDateTime getReservationTime() {
-        return reservationTime;
+    public LocalDateTime getStartTime() {
+        return startTime;
     }
 
-    public void setReservationTime(LocalDateTime reservationTime) {
-        this.reservationTime = reservationTime;
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 
     public String getBodyRegion() {
@@ -67,5 +89,21 @@ public class Reservation {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Integer getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Integer patientId) {
+        this.patientId = patientId;
+    }
+
+    public Integer getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Integer deviceId) {
+        this.deviceId = deviceId;
     }
 }
